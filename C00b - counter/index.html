@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="counter">
+        <h2>Bộ đếm Kmin</h2>
+        <form>
+            <fieldset>
+                <legend>Thiết lập</legend>
+                <div className="container">
+                    <label>
+                        Số bắt đầu
+                        <input name="start" type="number" value="0" size="15" onChange="" />
+                    </label>
+
+                    <label>
+                        <input name="end" type="number" value="100" onChange="" />
+                        Số kết thúc
+                        </labe>
+                </div>
+                <p className="error-message">Lỗi: ...</p>
+                <input type="button" class="btn--apply" value="Áp dụng" onClick="loadStartNumber()" />
+            </fieldset>
+        </form>
+        <div class="num">
+            <div>
+                <span class="btn-change">&lt;</span>
+                <span class="valueNumber">1</span>
+                <span class="btn-change">&gt;</span>
+            </div>
+            <button class="btn btn--blue" onClick="startCount()">Play</button>
+            <button class="btn btn--blue" onClick="pauseCount()">Pause</button>
+            <button class="btn btn--blue" onClick="restetCount()">Reset</button>
+        </div>
+        <div class="counter__actions">
+            <button class="btn btn--yellow" onClick="greet()">Xin chào</button>
+            <button class="btn btn--blue" onClick="farewell()">Tạm biệt</button>
+        </div>
+    </div>
+
+    <script src="main.js">
+
+    </script>
+</body>
+
+</html>
