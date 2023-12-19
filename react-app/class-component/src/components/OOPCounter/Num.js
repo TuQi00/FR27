@@ -7,6 +7,7 @@ class Num extends React.Component {
         super(props);
         this.state = {
             value: Number(this.props.start),
+            end: Number(this.props.end),
             isPlaying: false,
         };
 
@@ -18,44 +19,39 @@ class Num extends React.Component {
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.stop = this.stop.bind(this);
-    }
 
-    componentDidMount() {
-        if (this.props.autoPlay) {
-            this.timerID = setInterval(
-                () => this.up(),
-                1000
-            );
-            this.setState({
-                isPlaying: true
-            });
-        }
-        else {
-            this.setState({
-                isPlaying: false
-            });
-        }
+        this.props.isPlaying(this.state.isPlaying)
+        console.log(this.state.isPlaying, 'Nummmm');
     }
     
+    componentDidMount() {
+        if (this.props.autoPlay) {
+            this.timerID = setInterval(() => this.up(), 1000);
+            this.setState({ 
+                isPlaying: true,
+            
+             });
+        } else {
+            this.setState({ isPlaying: false });
+        }
+    }
 
-    componentDidUpdate(prevProps) {  
+    componentDidUpdate(prevProps) { 
         if (prevProps.start !== this.props.start) {
-            this.setState({
-                value: Number(this.props.start),
+            this.setState({ value: Number(this.props.start),
             });
         }
 
-        if (this.state.value === this.props.end) {
+        if (this.state.value === this.state.end) {
             console.log(this.state.value, "this.state.value",this.props.end,'this.props.end' );
             clearInterval(this.timerID);
         } 
-        
     }
 
     componentWillUnmount() {
-        console.log(3, 'Unmount');
         clearInterval(this.timerID)
     }
+
 
     up() {
         this.setState((state) => ({

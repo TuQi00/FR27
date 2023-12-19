@@ -10,27 +10,30 @@ class Counter extends React.Component {
         this.state = {
             start: this.props.start,
             end: this.props.end,
+            isPlaying: '',
         };
-        this.handleReceivedData = this.handleReceivedData.bind(this);
+        console.log(this.state, 1);
+        this.handleReceivedisPlaying = this.handleReceivedisPlaying.bind(this);
 
     }
     hello() {
         alert("Xin chào.");
     }
-    
+
     handleReceivedData(start,end){
         this.setState({
             start: start,
             end: end
         });
-        console.log(this.state, "3"); 
     }
+    
+
     render() {
         return (
             <div className="counter">
                 <h2 style={{ color: "var(--red)", fontSize: "1.2em" }}>{this.props.heading}</h2>
                 <SettingsForm receivedData = {this.handleReceivedData}/>           
-                <Num start={this.state.start} end={this.state.end}/>    
+                <Num start={this.state.start} end={this.state.end} autoPlay/>    
                 <div className="counter__actions">
                     <button className="btn btn--yellow" onClick={this.hello}>Xin chào</button>
                     <button className="btn btn--blue" onClick={() => console.log("Tạm biệt")}>Tạm biệt</button>

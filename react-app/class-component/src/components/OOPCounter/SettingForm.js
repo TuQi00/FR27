@@ -7,7 +7,7 @@ class SettingsForm extends React.Component {
         this.state = {
             start: 0,
             end: 10,
-            errorMessage: ''
+            errorMessage: '',
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +17,7 @@ class SettingsForm extends React.Component {
     handleInputChange(event) {
         const name = event.target.name;
         const value = Number(event.target.value);
-        
+
         if (!isNaN(value)) {
             this.setState({
                 [name]: value
@@ -27,11 +27,11 @@ class SettingsForm extends React.Component {
 
     handleSubmit() {
         const { start, end } = this.state;
-
         // Kiểm tra điều kiện trước khi cập nhật state và gọi receivedData
         if (start < end) {
             this.setState({
-                errorMessage: ''
+                errorMessage: '',
+                isPlaying: true
             });
             this.props.receivedData(start, end);
         } else {
