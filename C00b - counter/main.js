@@ -35,8 +35,8 @@ function startCount() {
             setButtonColors(defaultButtonColor, activeButtonColor, defaultButtonColor);
         }
 
-        valueNumber.innerHTML = startNumber;
         startNumber++;
+        valueNumber.innerHTML = startNumber;
     }
 
     const timeInterval = 1000;
@@ -45,7 +45,7 @@ function startCount() {
     setButtonColors(activeButtonColor, defaultButtonColor, defaultButtonColor);
 }
 
-function restetCount() {
+function resetCount() {
     clearInterval(interval);
     btnPlay.disabled = false;
     valueNumber.innerHTML = startInput.value;
