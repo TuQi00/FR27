@@ -31,9 +31,9 @@ class SettingsForm extends React.Component {
         if (start < end) {
             this.setState({
                 errorMessage: '',
-                isPlaying: true
             });
             this.props.receivedData(start, end);
+            this.props.isPlaying(true);
         } else {
             this.setState({
                 errorMessage: 'Lỗi nhập số'
@@ -71,7 +71,7 @@ class SettingsForm extends React.Component {
 
                     </div>
                     <p className="error-message">{this.state.errorMessage}</p>
-                    <input type="button" value="Áp dụng" onClick={this.handleSubmit} />
+                    <input type="button" value="Áp dụng" onClick={this.handleSubmit} disabled={this.props.isPlaying} />
                 </fieldset>
             </form>
         )

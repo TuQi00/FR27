@@ -20,7 +20,7 @@ class Num extends React.Component {
         this.pause = this.pause.bind(this);
         this.stop = this.stop.bind(this);
 
-        this.props.isPlaying(this.state.isPlaying)
+        this.props.handleIsPlaying(this.state.isPlaying);
         console.log(this.state.isPlaying, 'Nummmm');
     }
     
@@ -34,16 +34,19 @@ class Num extends React.Component {
         } else {
             this.setState({ isPlaying: false });
         }
+        console.log("lAN 1");
     }
 
     componentDidUpdate(prevProps) { 
         if (prevProps.start !== this.props.start) {
-            this.setState({ value: Number(this.props.start),
+            this.setState({ value: Number(this.props.start)
+                ,isPlaying: true
             });
         }
 
         if (this.state.value === this.state.end) {
-            console.log(this.state.value, "this.state.value",this.props.end,'this.props.end' );
+            console.log(this.state.value, "this.state.value",this.state.end,'this.state.end' );
+            console.log(this.state.isPlaying);
             clearInterval(this.timerID);
         } 
     }

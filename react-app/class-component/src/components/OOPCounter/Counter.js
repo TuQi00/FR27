@@ -10,10 +10,12 @@ class Counter extends React.Component {
         this.state = {
             start: this.props.start,
             end: this.props.end,
-            isPlaying: '',
+            isPlaying: true,
         };
-        console.log(this.state, 1);
-        this.handleReceivedisPlaying = this.handleReceivedisPlaying.bind(this);
+        
+        console.log(this.state, this.state.isPlaying, "constructor" );
+        this.handleReceivedData = this.handleReceivedData.bind(this);
+        this.handleIsPlaying = this.handleIsPlaying.bind(this);
 
     }
     hello() {
@@ -22,18 +24,20 @@ class Counter extends React.Component {
 
     handleReceivedData(start,end){
         this.setState({
-            start: start,
-            end: end
+            start,
+            end
         });
     }
-    
+    handleIsPlaying(isPlaying) {
+        this.setState({isPlaying });
+    }
 
     render() {
         return (
             <div className="counter">
                 <h2 style={{ color: "var(--red)", fontSize: "1.2em" }}>{this.props.heading}</h2>
-                <SettingsForm receivedData = {this.handleReceivedData}/>           
-                <Num start={this.state.start} end={this.state.end} autoPlay/>    
+                <SettingsForm receivedData = {this.handleReceivedData} isPlaying={this.state.isPlaying}/>           
+                <Num start={this.state.start} end={this.state.end} handleIsPlaying = {this.handleIsPlaying} autoPlay/>    
                 <div className="counter__actions">
                     <button className="btn btn--yellow" onClick={this.hello}>Xin chào</button>
                     <button className="btn btn--blue" onClick={() => console.log("Tạm biệt")}>Tạm biệt</button>
