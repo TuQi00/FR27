@@ -1,7 +1,8 @@
 import React from 'react';
 
 function TodoFilter({ itemCount, changeState }) {
-	const activeState = 0;
+  const activeState = 0;
+
   return (
     <div className="todo-footer-container">
       <div className="todo-count">{itemCount} items left</div>
@@ -34,7 +35,3 @@ function TodoFilter({ itemCount, changeState }) {
 }
 
 export default TodoFilter;
-
-
-
-

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-function TodoForm(props) {
+function TodoForm({ handleAddItem }) {
   const [item, setItem] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleAddItem(item);
+    handleAddItem(item);
     setItem("");
   };
 
@@ -28,4 +28,3 @@ function TodoForm(props) {
 }
 
 export default TodoForm;
-

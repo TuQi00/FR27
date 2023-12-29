@@ -29,14 +29,9 @@ const initialTodos = [
 ];
 
 function TodoApp() {
-  const [todos, setTodos] = useState([]);
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  const [todos, setTodos] = useState(initialTodos);
+  const [filteredTodos, setFilteredTodos] = useState(initialTodos);
   const [filterState, setFilterState] = useState(0);
-
-  useEffect(() => {
-    setTodos(initialTodos);
-    setFilteredTodos(initialTodos);
-  }, []);
 
   useEffect(() => {
     if (filterState === 0) {
@@ -47,6 +42,16 @@ function TodoApp() {
       setFilteredTodos(todos.filter((todo) => todo.isCompleted));
     }
   }, [filterState, todos]);
+
+  const updateTodo = (updatedTodo) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
+    );
+  };
+
+  const deleteTodo = (todoId) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
+  };
 
   function handleAddItem(item) {
     const newTodo = {
@@ -60,7 +65,7 @@ function TodoApp() {
   function handleFilterChange(value) {
     setFilterState(value);
   }
-  
+
   return (
     <>
       <div className="app-container">
@@ -68,7 +73,7 @@ function TodoApp() {
         <div className="todo-container">
           <TodoForm handleAddItem={handleAddItem} />
           <TodoFilter itemCount={filteredTodos.length} changeState={handleFilterChange} />
-          <TodoList todos={filteredTodos} />
+          <TodoList todos={filteredTodos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
         </div>
       </div>
       <TodoFooter />
@@ -76,5 +81,4 @@ function TodoApp() {
   );
 }
 
-export default TodoApp;
-
+export default TodoApp
