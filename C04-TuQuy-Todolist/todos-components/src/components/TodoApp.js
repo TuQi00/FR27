@@ -32,16 +32,37 @@ function TodoApp() {
   const [todos, setTodos] = useState(initialTodos);
   const [filteredTodos, setFilteredTodos] = useState(initialTodos);
   const [filterState, setFilterState] = useState(0);
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+  
   useEffect(() => {
-    if (filterState === 0) {
-      setFilteredTodos(todos);
-    } else if (filterState === 1) {
-      setFilteredTodos(todos.filter((todo) => !todo.isCompleted));
+    let filtered = todos;
+  
+    if (filterState === 1) {
+      filtered = todos.filter((todo) => !todo.isCompleted);
     } else if (filterState === 2) {
-      setFilteredTodos(todos.filter((todo) => todo.isCompleted));
+      filtered = todos.filter((todo) => todo.isCompleted);
     }
-  }, [filterState, todos]);
+  
+    if (searchTerm) {
+      filtered = filtered.filter((todo) =>
+        todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  
+    const sortedTodos = [...filtered];
+    if (sortOrder === "asc") {
+      sortedTodos.sort((a, b) => a.id - b.id);
+    } else if (sortOrder === "desc") {
+      sortedTodos.sort((a, b) => b.id - a.id);
+    } else if (sortOrder === "a-z") {
+      sortedTodos.sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+    } else if (sortOrder === "z-a") {
+      sortedTodos.sort((a, b) => b.title.localeCompare(a.title, 'en', { sensitivity: 'base' }));
+    }
+  
+    setFilteredTodos(sortedTodos);
+  }, [filterState, todos, searchTerm, sortOrder]);
 
   const updateTodo = (updatedTodo) => {
     setTodos((prevTodos) =>
@@ -63,16 +84,25 @@ function TodoApp() {
   }
 
   function handleFilterChange(value) {
+    console.log(value, 'state');
     setFilterState(value);
   }
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  }
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+  }
+  
   return (
     <>
       <div className="app-container">
         <TodoHeader />
         <div className="todo-container">
-          <TodoForm handleAddItem={handleAddItem} />
-          <TodoFilter itemCount={filteredTodos.length} changeState={handleFilterChange} />
+          <TodoForm handleAddItem={handleAddItem} handleSearch={handleSearch} />
+          <TodoFilter itemCount={filteredTodos.length} changeState={handleFilterChange} handleSort={handleSort} filterState={filterState}/>
           <TodoList todos={filteredTodos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
         </div>
       </div>

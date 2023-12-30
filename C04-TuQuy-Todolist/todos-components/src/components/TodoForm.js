@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 
-function TodoForm({ handleAddItem }) {
+function TodoForm({ handleAddItem, handleSearch  }) {
   const [item, setItem] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(item);
     handleAddItem(item);
     setItem("");
   };
-
+  
   const handleChange = (e) => {
     setItem(e.target.value);
+    handleSearch(e.target.value);
   };
 
+  
   return (
     <div className="todo-form-container">
       <form onSubmit={handleSubmit}>
@@ -22,6 +25,7 @@ function TodoForm({ handleAddItem }) {
           value={item}
           onChange={handleChange}
         />
+        
       </form>
     </div>
   );

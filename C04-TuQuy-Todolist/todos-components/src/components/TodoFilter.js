@@ -1,7 +1,13 @@
 import React from 'react';
 
-function TodoFilter({ itemCount, changeState }) {
-  const activeState = 0;
+function TodoFilter({ itemCount, changeState, handleSort, filterState }) {
+  console.log(filterState, 'TodoFilter');
+
+  function isActive(state) {
+    // console.log(filterState,'filterState');
+    // console.log(state,'state');
+    return filterState === state;
+  }
 
   return (
     <div className="todo-footer-container">
@@ -15,23 +21,31 @@ function TodoFilter({ itemCount, changeState }) {
         </span>
         <span
           className={`menu-item ${isActive(1) ? 'active' : ''}`}
+
           onClick={() => changeState(1)}
         >
           Active
         </span>
         <span
           className={`menu-item ${isActive(2) ? 'active' : ''}`}
+
           onClick={() => changeState(2)}
         >
           Complete
         </span>
+
+        <label>Sort By: </label>
+        <select className='menu-item' onChange={(e) => handleSort(e.target.value)}>
+          <option value="asc">Oldest</option>
+          <option value="desc">Newest</option>
+          <option value="a-z">A-Z</option>
+          <option value="z-a">Z-A</option>
+        </select>
       </div>
     </div>
   );
 
-  function isActive(state) {
-    return activeState === state;
-  }
+  
 }
 
 export default TodoFilter;

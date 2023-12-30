@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function TodoItem({ todo, updateTodo, deleteTodo }) {
   const [isEditing, setEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
   const [displayTitle, setDisplayTitle] = useState(todo.title);
-
-  useEffect(() => {
-    // Bỏ `useEffect` không cần thiết
-    setEditedTitle(editedTitle);
-  }, [editedTitle]);
 
   const handleToggleStatus = () => {
     console.log(1111);
@@ -28,17 +23,24 @@ function TodoItem({ todo, updateTodo, deleteTodo }) {
   };
 
   const handleSaveEdit = () => {
-    setDisplayTitle(editedTitle);
+    console.log(editedTitle);
     const updatedTodo = {
       ...todo,
       title: editedTitle,
     };
+    setDisplayTitle(editedTitle);
     updateTodo(updatedTodo);
     setEditing(false);
   };
 
   const handleCancelEdit = () => {
-    setEditedTitle(todo.title);
+    console.log(displayTitle, 'handleCancelEdit');
+    const updatedTodo = {
+      ...todo,
+      title: displayTitle,
+    };
+    setDisplayTitle(displayTitle);
+    updateTodo(updatedTodo)
     setEditing(false);
   };
 
@@ -49,8 +51,8 @@ function TodoItem({ todo, updateTodo, deleteTodo }) {
   return (
     <div className="todo-item-container">
       <span className="todo-item-toggle" onClick={handleToggleStatus}>
-        <img src={`${todo.isCompleted ? 'assets/uncompleted-tick.svg ' : 'assets/complete-tick.svg'}`} alt="Complete Tick" />
-        {/* <img src="assets/uncompleted-tick.svg" alt="Complete Tick" /> */}
+        <img src={`${todo.isCompleted ? 'assets/complete-tick.svg ' : 'assets/uncompleted-tick.svg'}`} alt="Complete Tick" />
+        
       </span>
       <div
         className={`todo-item-content ${todo.isCompleted ? 'completed' : ''} ${
