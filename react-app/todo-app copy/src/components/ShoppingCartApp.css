@@ -1,0 +1,122 @@
+/* App Container */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Product List Container */
+  .product-list {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    width: 300px;
+    margin-bottom: 50px;
+  }
+  
+  .product-list h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .product-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .product-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .product-list button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+  
+  /* Cart Container */
+  .cart {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    width: 300px;
+  }
+  
+  .cart h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .cart ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cart li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .cart button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+  
+  .cart p {
+    margin-top: 16px;
+    font-weight: bold;
+  }
+  
+  /* Product Item */
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Quantity Buttons */
+  .quantity-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+  
+  /* Total Container */
+  .total {
+    margin-top: 16px;
+    text-align: right;
+  }
+  
+  /* Remove Button */
+  .remove-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
