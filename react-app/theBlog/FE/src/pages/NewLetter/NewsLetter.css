@@ -1,0 +1,29 @@
+.newsletter {
+    padding: 0 6vw;
+}
+
+.newsletter.chageBgColorDark {
+    background-color: #090D1F;
+}
+
+.newsletter.chageBgColorbright {
+    background-color: #FFF;
+}
+
+@media (max-width: 1400px) {
+    .newsletter {
+        padding: 0 4vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .newsletter {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 440px) {
+    .newsletter {
+        padding: 0 30px;
+    }
+}

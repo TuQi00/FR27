@@ -1,0 +1,33 @@
+/* Header.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #090D1F;
+  color: white;
+}
+
+.left-items {
+  display: flex;
+  align-items: center;
+}
+
+.right-items {
+  display: flex;
+  align-items: center;
+}
+.right-items nav a  {
+  color: white;
+  text-decoration: none;
+  margin-right: 18px;
+}
+
+
+.dark-mode-button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Add additional styling based on your design preferences */

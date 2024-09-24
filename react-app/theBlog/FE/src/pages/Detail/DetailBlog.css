@@ -1,0 +1,134 @@
+.detailPost {
+    padding: 0 6vw;
+    display: flex;
+}
+
+.detailPost.chageBgColorDark {
+    background-color: #090D1F;
+}
+
+.detailPost.chageBgColorbright {
+    background-color: #FFF;
+}
+
+.detailPost_list {
+    width: 30%;
+    box-shadow: 2px 3px 15px rgba(0, 0, 0, .1);
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 30px;
+    transition: all .5s;
+    scrollbar-width: thin;
+    scrollbar-color: #999999 #f5f5f5;
+    scroll-behavior: smooth;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.detailPost_list_btn-left {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+    font-size: 30px;
+    color: rgb(107, 107, 107);
+    border: none;
+    outline: none;
+    box-shadow: 2px 3px 15px rgba(0, 0, 0, .1);
+    padding: 7px;
+    transition: all .5s;
+    border-radius: 2px;
+}
+
+.detailPost_list_btn-right {
+    position: sticky;
+    left: 0;
+    top: 20px;
+    background-color: white;
+    font-size: 30px;
+    color: rgb(107, 107, 107);
+    border: none;
+    outline: none;
+    box-shadow: 2px 3px 15px rgba(0, 0, 0, .1);
+    padding: 7px;
+    height: 50px;
+    border-radius: 2px;
+}
+
+.detailPost_list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.detailPost_list::-webkit-scrollbar-thumb {
+    background-color: #bebebe;
+    border-radius: 10px;
+}
+
+.detailPost_list::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+
+.detailPost_list.hiddent {
+    transform: translateX(-800px);
+    transition: all .5s;
+}
+
+.detailPost_list.show {
+    transition: all .5s;
+}
+
+.detailPost_btnControllerTop {
+    position: fixed;
+    bottom: 40px;
+    z-index: 3;
+    right: 40px;
+    color: rgb(91, 89, 89);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: 2px 3px 15px rgba(0, 0, 0, .1);
+    padding: 20px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 40px;
+    transition: all .5s;
+    opacity: .7;
+}
+
+.detailPost_btnControllerTop:hover {
+    box-shadow: 2px 3px 20px rgba(0, 0, 0, .3);
+    transition: all .5s;
+    opacity: 1;
+}
+
+@media (max-width: 500px) {
+    .detailPost_btnControllerTop {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .detailPost {
+        padding: 0 4vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .detailPost {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .detailPost {
+        padding: 0 20px;
+    }
+}

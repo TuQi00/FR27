@@ -1,0 +1,12 @@
+/* App.css */
+
+body {
+    margin: 0; /* Đảm bảo không có margin mặc định của trình duyệt */
+    background-color: #090D1F;
+    color: aliceblue;
+    max-width: 90%; /* Điều này có thể thay đổi tùy thuộc vào thiết kế của bạn */
+    margin: 0 auto; /* Canh giữa nội dung trên màn hình */
+    padding: 0 20px
+  }
+  
+  
